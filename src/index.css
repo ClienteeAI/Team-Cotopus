@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-primary: #1E3A8A;
+  --color-secondary: #3B82F6;
+  --color-accent: #10B981;
+  --color-bg-dark: #0a0502;
+  --color-text-main: #1F2937;
+  --color-text-muted: #6B7280;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#f8fafc] text-text-main antialiased overflow-x-hidden;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.atmosphere {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(30, 58, 138, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.layered-card {
+  @apply relative transition-all duration-300 hover:-translate-y-1;
+}
+
+.layered-card::before {
+  content: '';
+  @apply absolute inset-0 bg-primary/5 rounded-3xl -z-10 translate-x-2 translate-y-2 transition-transform duration-300;
+}
+
+.layered-card:hover::before {
+  @apply translate-x-3 translate-y-3;
+}
